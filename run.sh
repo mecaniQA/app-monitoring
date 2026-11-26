@@ -8,6 +8,26 @@ echo "============================================================"
 echo " MecâniQA Automotive Tech — OAT 4 (API + Prometheus + Grafana)"
 echo "============================================================"
 echo ""
+
+if ! command -v docker > /dev/null 2>&1; then
+  echo "[ERRO] O comando 'docker' não foi encontrado no PATH."
+  echo "       Instale o Docker Desktop (ou Docker Engine) e tente novamente."
+  exit 1
+fi
+
+if ! docker info > /dev/null 2>&1; then
+  echo "[ERRO] O daemon do Docker não está em execução."
+  echo "       Inicie o Docker Desktop (macOS/Windows), Colima/OrbStack ou o serviço 'docker' (Linux)"
+  echo "       e aguarde ele ficar ativo antes de executar ./run.sh novamente."
+  exit 1
+fi
+
+if ! docker compose version > /dev/null 2>&1; then
+  echo "[ERRO] O plugin 'docker compose' não está disponível."
+  echo "       Atualize o Docker ou instale o Docker Compose v2 e tente novamente."
+  exit 1
+fi
+
 echo "[1/3] Subindo containers (API Django, Prometheus e Grafana)..."
 docker compose up -d --build
 
