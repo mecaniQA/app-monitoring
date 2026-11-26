@@ -14,7 +14,7 @@ Este projeto fornece:
 ## Estrutura do Repositório
 
 ```text
-mecaniqa-oat4-api/
+app-monitoring/
 ├── api/
 │   ├── Dockerfile
 │   ├── requirements.txt
